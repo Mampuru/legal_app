@@ -1,4 +1,8 @@
 
 class Legislation {
-  // Define properties based on the API response
+  final String title;
+  final String description;
+  final String status;
+
+  Legislation({required this.title, required this.description, required this.status});
 }
