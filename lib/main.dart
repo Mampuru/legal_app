@@ -1,6 +1,9 @@
+import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:legal_app/views/legislation_view.dart';
+
+import 'constants.dart';
 
 Future<void> main() async {
   await dotenv.load(fileName: ".env");
@@ -20,7 +23,11 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: LegislationView(),
+      home: AnimatedSplashScreen(
+        splash: logoPath,
+        nextScreen: LegislationView(),
+        splashTransition: SplashTransition.rotationTransition,
+      ),
     );
   }
 }
