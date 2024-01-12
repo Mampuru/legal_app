@@ -24,9 +24,11 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: AnimatedSplashScreen(
+        duration: 3000,
         splash: logoPath,
         nextScreen: LegislationView(),
-        splashTransition: SplashTransition.rotationTransition,
+        splashTransition: SplashTransition.scaleTransition,
+        splashIconSize: 250,
       ),
     );
   }
