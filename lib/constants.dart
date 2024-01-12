@@ -1,0 +1,1 @@
+const logoPath = "assets/logo/law.png";
