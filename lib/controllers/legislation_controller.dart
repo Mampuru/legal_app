@@ -15,10 +15,40 @@ class LegislationController extends GetxController {
     try {
       isLoading(true);
       // Make API call to Law.Africa API
-      // Parse response and populate legislationList
-      legislationList(/* populated list */);
+      final url = Uri.parse('https://api.laws.africa/v2/akn/za-cpt/.json');
+      final token = 'your_auth_token_here'; // Replace 'your_auth_token_here' with your actual token
+
+      final response = await http.get(
+        url,
+        headers: {
+          'Authorization': 'Token $token',
+        },
+      );
+
+      // Check if the request was successful
+      if (response.statusCode == 200) {
+        // Parse response and populate legislationList
+        final List<dynamic> responseData = json.decode(response.body);
+        final List<Legislation> parsedLegislationList = responseData
+            .map((item) => Legislation(
+          title: item['title'] ?? '',
+          description: item['description'] ?? '',
+          status: item['status'] ?? '',
+        ))
+            .toList();
+
+        // Update legislationList with parsed data
+        legislationList(parsedLegislationList);
+      } else {
+        // Handle error if the request was not successful
+        print('Failed to fetch legislation: ${response.statusCode}');
+      }
+    } catch (error) {
+      // Handle any exceptions that occur during the API call
+      print('Error fetching legislation: $error');
     } finally {
       isLoading(false);
     }
   }
+
 }
