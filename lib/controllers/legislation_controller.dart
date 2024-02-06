@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
+import '../api/api_config.dart';
 import '../models/legislation_model.dart';
+import 'package:http/http.dart' as http;
 
 class LegislationController extends GetxController {
   var isLoading = true.obs;
@@ -16,7 +18,7 @@ class LegislationController extends GetxController {
       isLoading(true);
       // Make API call to Law.Africa API
       final url = Uri.parse('https://api.laws.africa/v2/akn/za-cpt/.json');
-      final token = 'your_auth_token_here'; // Replace 'your_auth_token_here' with your actual token
+      const token = authToken; // Replace 'your_auth_token_here' with your actual token
 
       final response = await http.get(
         url,
