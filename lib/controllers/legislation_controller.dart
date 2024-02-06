@@ -1,3 +1,6 @@
+import 'dart:convert';
+
+import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import '../api/api_config.dart';
 import '../models/legislation_model.dart';
@@ -43,11 +46,15 @@ class LegislationController extends GetxController {
         legislationList(parsedLegislationList);
       } else {
         // Handle error if the request was not successful
-        print('Failed to fetch legislation: ${response.statusCode}');
+        if (kDebugMode) {
+          print('Failed to fetch legislation: ${response.statusCode}');
+        }
       }
     } catch (error) {
       // Handle any exceptions that occur during the API call
-      print('Error fetching legislation: $error');
+      if (kDebugMode) {
+        print('Error fetching legislation: $error');
+      }
     } finally {
       isLoading(false);
     }
