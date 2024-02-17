@@ -8,20 +8,6 @@ import '../models/legislation_model.dart';
 class LegislationView extends StatelessWidget {
   final LegislationController _controller = Get.put(LegislationController());
 
-  final List<Legislation> legislationList = [
-    Legislation(
-      title: 'Sample Law 1',
-      description: 'Description of Sample Law 1',
-      status: 'Pending',
-    ),
-    Legislation(
-      title: 'Sample Law 2',
-      description: 'Description of Sample Law 2',
-      status: 'Approved',
-    ),
-    // Add more legislation items as needed
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,7 +18,7 @@ class LegislationView extends StatelessWidget {
         init: _controller,
         builder: (_) {
           // Implement UI to display legislation data
-          return _.isLoading.value ? const CircularProgressIndicator() : legislationListView(legislationList);
+          return _.isLoading.value ? const CircularProgressIndicator() : legislationListView(_controller.legislationList);
         },
       ),
     );
