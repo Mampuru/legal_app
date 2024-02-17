@@ -35,14 +35,14 @@ class LegislationController extends GetxController {
         // Parse response and populate legislationList
         final Map<dynamic,dynamic> responseData = json.decode(response.body);
         logger.i(responseData["results"]);
-        List<dynamic> parsedLegislationList = responseData["results"];
-        logger.i(parsedLegislationList);
-        // final List<Legislation> parsedLegislationList = responseData
-        //     .map((item) => Legislation(
-        //   title: item['title'] ?? '',
-        //   description: item['description'] ?? '',
-        //   status: item['status'] ?? '',
-        // )).toList();
+        List<dynamic> responseList = responseData["results"];
+
+        final List<Legislation> parsedLegislationList = responseList
+            .map((item) => Legislation(
+          title: item['title'] ?? '',
+          description: item['updated_at'] ?? '',
+          status: item['publication_name'] ?? '',
+        )).toList();
 
         // Update legislationList with parsed data
         // legislationList(parsedLegislationList);
