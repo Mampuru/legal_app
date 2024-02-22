@@ -5,5 +5,6 @@
 * The objective of the application is simplify and making law available to all
 * Current version support Africa countries only.
 
-# Features
+## Features
 * Search functionality for works and expressions.
+* Legislation reader view  
