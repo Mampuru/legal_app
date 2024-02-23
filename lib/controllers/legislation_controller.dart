@@ -50,13 +50,11 @@ class LegislationController extends GetxController {
       } else {
         // Handle error if the request was not successful
         if (kDebugMode) {
-          logger.e(response.statusCode);
           print('Failed to fetch legislation: ${response.statusCode}');
         }
       }
     } catch (error) {
       // Handle any exceptions that occur during the API callz
-      logger.e(error);
       if (kDebugMode) {
         print('Error fetching legislation: $error');
       }
