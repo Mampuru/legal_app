@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../controllers/legislation_controller.dart';
-import '../models/legislation_model.dart';
 
 // ignore: use_key_in_widget_constructors
 class LegislationView extends StatelessWidget {
