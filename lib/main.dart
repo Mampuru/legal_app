@@ -1,6 +1,7 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:legal_app/views/home_view.dart';
 import 'package:legal_app/views/legislation_view.dart';
 
 import 'constants.dart';
@@ -19,14 +20,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Legal Assistant',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+      theme: ThemeData.dark(), // Use dark theme
       home: AnimatedSplashScreen(
         duration: 3000,
         splash: logoPath,
-        nextScreen: LegislationView(),
+        nextScreen: const HomeView(),
         splashTransition: SplashTransition.scaleTransition,
         splashIconSize: 250,
       ),

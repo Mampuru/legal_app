@@ -49,7 +49,7 @@ class _HomeViewState extends State<HomeView> {
   }
 }
 
-//Test widgets 
+//Test widgets
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
