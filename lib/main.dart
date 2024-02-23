@@ -18,7 +18,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Legal Assistant',
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark(), // Use dark theme
       home: AnimatedSplashScreen(
