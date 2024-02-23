@@ -9,9 +9,6 @@ class LegislationView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Legislation Reader'),
-      ),
       body: GetX<LegislationController>(
         init: _controller,
         builder: (_) {
