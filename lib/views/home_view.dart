@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'legislation_view.dart';
+
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
 
@@ -12,7 +14,7 @@ class _HomeViewState extends State<HomeView> {
 
   final List<Widget> _screens = [
     HomeScreen(),
-    SearchScreen(),
+    LegislationView(),
     ProfileScreen(),
   ];
 
@@ -30,17 +32,17 @@ class _HomeViewState extends State<HomeView> {
             _currentIndex = index;
           });
         },
-        items: const [
+        items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Icon(Icons.home,color: _currentIndex == 0 ? Colors.cyanAccent : Colors.white),
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.search),
+            icon:  Icon(Icons.search,color: _currentIndex == 1 ? Colors.cyanAccent : Colors.white),
             label: 'Search',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person),
+            icon: Icon(Icons.person,color: _currentIndex == 2 ? Colors.cyanAccent : Colors.white),
             label: 'Profile',
           ),
         ],
@@ -55,15 +57,6 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Text('Home Screen'),
-    );
-  }
-}
-
-class SearchScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text('Search Screen'),
     );
   }
 }
