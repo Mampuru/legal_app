@@ -22,7 +22,7 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Legislation Reader'),
+        title: const Text('Legal Assist'),
       ),
       body: _screens[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
