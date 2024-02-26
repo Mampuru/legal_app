@@ -21,7 +21,7 @@ class LegislationController extends GetxController {
     try {
       isLoading(true);
       // Make API call to Law.Africa API
-      final url = Uri.parse('https://api.laws.africa/v2/akn/za-cpt/.json');
+      final url = Uri.parse('$baseUrl/akn/za-cpt/.json');
       var token = authToken; // Replace 'your_auth_token_here' with your actual token
 
       final response = await http.get(
