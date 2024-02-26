@@ -18,10 +18,11 @@ class LegislationController extends GetxController {
   }
 
   void fetchLegislation() async {
+    String country = "za-cpt";
     try {
       isLoading(true);
       // Make API call to Law.Africa API
-      final url = Uri.parse('$baseUrl/akn/za-cpt/.json');
+      final url = Uri.parse('$baseUrl/akn/$country/.json');
       var token = authToken; // Replace 'your_auth_token_here' with your actual token
 
       final response = await http.get(
