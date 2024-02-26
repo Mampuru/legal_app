@@ -47,7 +47,6 @@ class LegislationController extends GetxController {
 
         // Update legislationList with parsed data
         legislationList(parsedLegislationList);
-        logger.i(legislationList.length);
       } else {
         // Handle error if the request was not successful
         if (kDebugMode) {
