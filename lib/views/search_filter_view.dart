@@ -35,9 +35,6 @@ class _SearchFilterViewState extends State<SearchFilterView> {
     @override
     Widget build(BuildContext context) {
       return Scaffold(
-        appBar: AppBar(
-          title: const Text('Your Screen Title'),
-        ),
         body: Column(
           children: [
             SearchAndFilter(
