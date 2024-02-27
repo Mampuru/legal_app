@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:legal_app/views/search_filter_view.dart';
 
 import 'legislation_view.dart';
 
@@ -13,7 +14,7 @@ class _HomeViewState extends State<HomeView> {
   int _currentIndex = 0;
 
   final List<Widget> _screens = [
-    HomeScreen(),
+    const SearchFilterView(),
     LegislationView(),
     ProfileScreen(),
   ];
