@@ -24,53 +24,45 @@ class SearchAndFilter extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(16.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           // Country dropdown
-          Expanded(
-            flex: 2,
-            child: DropdownButtonFormField<String>(
-              decoration: InputDecoration(
-                labelText: 'Country',
-                border: OutlineInputBorder(),
-              ),
-              value: selectedCountry,
-              onChanged: onCountryChanged,
-              items: countries.map((country) {
-                return DropdownMenuItem<String>(
-                  value: country,
-                  child: Text(country),
-                );
-              }).toList(),
+          DropdownButtonFormField<String>(
+            decoration: const InputDecoration(
+              labelText: 'Country',
+              border: OutlineInputBorder(),
             ),
+            value: selectedCountry,
+            onChanged: onCountryChanged,
+            items: countries.map((country) {
+              return DropdownMenuItem<String>(
+                value: country,
+                child: Text(country),
+              );
+            }).toList(),
           ),
-          SizedBox(width: 16.0),
+          const SizedBox(height: 16.0),
           // Topic dropdown
-          Expanded(
-            flex: 2,
-            child: DropdownButtonFormField<String>(
-              decoration: InputDecoration(
-                labelText: 'Topic',
-                border: OutlineInputBorder(),
-              ),
-              value: selectedTopic,
-              onChanged: onTopicChanged,
-              items: topics.map((topic) {
-                return DropdownMenuItem<String>(
-                  value: topic,
-                  child: Text(topic),
-                );
-              }).toList(),
+          DropdownButtonFormField<String>(
+            decoration: const InputDecoration(
+              labelText: 'Topic',
+              border: OutlineInputBorder(),
             ),
+            value: selectedTopic,
+            onChanged: onTopicChanged,
+            items: topics.map((topic) {
+              return DropdownMenuItem<String>(
+                value: topic,
+                child: Text(topic),
+              );
+            }).toList(),
           ),
-          SizedBox(width: 16.0),
+          const SizedBox(height: 16.0),
           // Search button
-          Expanded(
-            child: ElevatedButton(
-              onPressed: onSearchPressed,
-              child: Text('Search'),
-            ),
+          ElevatedButton(
+            onPressed: onSearchPressed,
+            child: const Text('Search'),
           ),
         ],
       ),
