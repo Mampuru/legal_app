@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:legal_app/models/country_model.dart';
 
 class SearchAndFilter extends StatelessWidget {
-  final List<String> countries; // List of available countries
+  final List<Country> countries; // List of available countries
   final List<String> topics; // List of available topics
   final String? selectedCountry; // Currently selected country
   final String? selectedTopic; // Currently selected topic
@@ -37,8 +38,8 @@ class SearchAndFilter extends StatelessWidget {
             onChanged: onCountryChanged,
             items: countries.map((country) {
               return DropdownMenuItem<String>(
-                value: country,
-                child: Text(country),
+                value: country.name,
+                child: Text(country.name),
               );
             }).toList(),
           ),
