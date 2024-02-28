@@ -1,6 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:legal_app/views/search_filter_comp.dart';
+
+import '../controllers/legislation_controller.dart';
 
 class SearchFilterView extends StatefulWidget {
   const SearchFilterView({Key? key}) : super(key: key);
@@ -10,6 +13,7 @@ class SearchFilterView extends StatefulWidget {
 }
 
 class _SearchFilterViewState extends State<SearchFilterView> {
+    final LegislationController _controller = Get.put(LegislationController());
     String? selectedCountry;
     String? selectedTopic;
 
@@ -38,7 +42,7 @@ class _SearchFilterViewState extends State<SearchFilterView> {
         body: Column(
           children: [
             SearchAndFilter(
-              countries: const ['Country 1', 'Country 2', 'Country 3'],
+              countries: _controller.countryList,
               topics: const ['Topic 1', 'Topic 2', 'Topic 3'],
               selectedCountry: selectedCountry,
               selectedTopic: selectedTopic,
