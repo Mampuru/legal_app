@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
+import 'package:legal_app/models/country_model.dart';
 import '../api/api_config.dart';
 import '../constants.dart';
 import '../models/legislation_model.dart';
@@ -10,11 +11,13 @@ import 'package:http/http.dart' as http;
 class LegislationController extends GetxController {
   var isLoading = true.obs;
   var legislationList = <Legislation>[].obs;
+  var countryList = <Country>[].obs;
 
   @override
   void onInit() {
     super.onInit();
     fetchLegislation();
+    fetchCounties();
   }
 
   void fetchLegislation() async {
@@ -35,7 +38,7 @@ class LegislationController extends GetxController {
       if (response.statusCode == 200) {
         // Parse response and populate legislationList
         final Map<dynamic,dynamic> responseData = json.decode(response.body);
-        logger.i(responseData["results"]);
+        // logger.i(responseData["results"]);
         List<dynamic> responseList = responseData["results"];
 
         final List<Legislation> parsedLegislationList = responseList
@@ -79,20 +82,21 @@ class LegislationController extends GetxController {
       );
       // Check if the request was successful
       if (response.statusCode == 200) {
-        // Parse response and populate legislationList
+        // Parse response and populate CountryList
         final Map<dynamic,dynamic> responseData = json.decode(response.body);
         logger.i(responseData["results"]);
-        // List<dynamic> responseList = responseData["results"];
-        //
-        // final List<Legislation> parsedLegislationList = responseList
-        //     .map((item) => Legislation(
-        //   title: item['title'] ?? '',
-        //   description: item['updated_at'] ?? '',
-        //   status: item['publication_name'] ?? '',
-        // )).toList();
+        List<dynamic> responseList = responseData["results"];
 
-        // Update legislationList with parsed data
-        // legislationList(parsedLegislationList);
+        final List<Country> parsedCountryList = responseList
+            .map((item) => Country(
+          name: item['name'] ?? '',
+          code: item['code'] ?? '',
+          localities: item['localities'] ?? '',
+        )).toList();
+
+        // Update CountryList with parsed data
+        countryList(parsedCountryList);
+        logger.i(countryList.length);
       } else {
         // Handle error if the request was not successful
         if (kDebugMode) {
