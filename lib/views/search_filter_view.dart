@@ -49,7 +49,7 @@ class _SearchFilterViewState extends State<SearchFilterView> {
           children: [
             Obx(() => SearchAndFilter(
               countries: _controller.countryList,
-              topics: const ['Topic 1', 'Topic 2', 'Topic 3'],
+              topics: _controller.tocList,
               selectedCountry: selectedCountry,
               selectedTopic: selectedTopic,
               onCountryChanged: onCountryChanged,
