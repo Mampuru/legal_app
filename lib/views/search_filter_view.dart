@@ -17,6 +17,12 @@ class _SearchFilterViewState extends State<SearchFilterView> {
     String? selectedCountry;
     String? selectedTopic;
 
+    @override
+    void initState() {
+      super.initState();
+      _controller.fetchCountries();
+    }
+
     void onCountryChanged(String? value) {
       setState(() {
         selectedCountry = value;
