@@ -17,7 +17,6 @@ class LegislationController extends GetxController {
   void onInit() {
     super.onInit();
     fetchLegislation();
-    fetchCounties();
   }
 
   void fetchLegislation() async {
@@ -67,7 +66,7 @@ class LegislationController extends GetxController {
   }
 
 
-  void fetchCounties() async {
+  void fetchCountries() async {
     try {
       isLoading(true);
       // Make API call to Law.Africa API
