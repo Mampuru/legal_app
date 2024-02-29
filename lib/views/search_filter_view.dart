@@ -47,7 +47,7 @@ class _SearchFilterViewState extends State<SearchFilterView> {
       return Scaffold(
         body: Column(
           children: [
-            SearchAndFilter(
+            Obx(() => SearchAndFilter(
               countries: _controller.countryList,
               topics: const ['Topic 1', 'Topic 2', 'Topic 3'],
               selectedCountry: selectedCountry,
@@ -55,8 +55,7 @@ class _SearchFilterViewState extends State<SearchFilterView> {
               onCountryChanged: onCountryChanged,
               onTopicChanged: onTopicChanged,
               onSearchPressed: onSearchPressed,
-            ),
-            // Your other widgets here
+            )),
           ],
         ),
       );
