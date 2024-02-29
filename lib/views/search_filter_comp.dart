@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:legal_app/models/country_model.dart';
 
+import '../models/toc_model.dart';
+
 class SearchAndFilter extends StatelessWidget {
   final List<Country> countries; // List of available countries
-  final List<String> topics; // List of available topics
+  final List<TOC> topics; // List of available topics
   final String? selectedCountry; // Currently selected country
   final String? selectedTopic; // Currently selected topic
   final ValueChanged<String?> onCountryChanged; // Callback when country selection changes
@@ -54,8 +56,8 @@ class SearchAndFilter extends StatelessWidget {
             onChanged: onTopicChanged,
             items: topics.map((topic) {
               return DropdownMenuItem<String>(
-                value: topic,
-                child: Text(topic),
+                value: topic.title,
+                child: Text(topic.title),
               );
             }).toList(),
           ),
