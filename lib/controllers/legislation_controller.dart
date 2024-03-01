@@ -9,16 +9,20 @@ import '../constants.dart';
 import '../models/legislation_model.dart';
 import 'package:http/http.dart' as http;
 
+import '../models/localities_model.dart';
+
 class LegislationController extends GetxController {
   var isLoading = true.obs;
   var legislationList = <Legislation>[].obs;
   var countryList = <Country>[].obs;
   var tocList = <TOC>[].obs;
+  var localityList = <Locality>[].obs;
 
   @override
   void onInit() {
     super.onInit();
     fetchLegislation();
+    fetchTableOfContent();
   }
 
   void fetchLegislation() async {
@@ -52,6 +56,8 @@ class LegislationController extends GetxController {
 
         // Update legislationList with parsed data
         legislationList(parsedLegislationList);
+
+
       } else {
         // Handle error if the request was not successful
         if (kDebugMode) {
@@ -67,7 +73,6 @@ class LegislationController extends GetxController {
       isLoading(false);
     }
   }
-
 
   void fetchCountries() async {
     try {
@@ -86,7 +91,7 @@ class LegislationController extends GetxController {
       if (response.statusCode == 200) {
         // Parse response and populate CountryList
         final Map<dynamic,dynamic> responseData = json.decode(response.body);
-        logger.i(responseData["results"]);
+        // logger.i(responseData["results"]);
         List<dynamic> responseList = responseData["results"];
 
         final List<Country> parsedCountryList = responseList
@@ -98,7 +103,6 @@ class LegislationController extends GetxController {
 
         // Update CountryList with parsed data
         countryList(parsedCountryList);
-        logger.i(countryList.length);
       } else {
         // Handle error if the request was not successful
         if (kDebugMode) {
@@ -115,11 +119,33 @@ class LegislationController extends GetxController {
     }
   }
 
+  //Extracts localities for the fetch countries response
+  void fetchLocality(List localities){
+    try{
+      final List<Locality> parsedLocalityList = localities
+          .map((item) => Locality(
+        name: item['name'] ?? '',
+        code: item['code'] ?? '',
+        frbrUriCode: item['frbr_uri_code'] ?? '',
+      )).toList();
+
+      // Update localityList with parsed data
+      localityList(parsedLocalityList);
+
+    } catch (error) {
+      // Handle any exceptions that occur during the API callz
+      if (kDebugMode) {
+        print('Error fetching legislation: $error');
+      }
+    }
+  }
+
+  //TODO complete this late only works when country,locality,Writing,Expression are selected
   void fetchTableOfContent() async {
     String country = "za-cpt";
     try {
       isLoading(true);
-      final url = Uri.parse('$baseUrl/$country/toc.json');
+      final url = Uri.parse('https://api.laws.africa/v2/akn/za-cpt');
       var token = authToken;
 
       final response = await http.get(
@@ -132,9 +158,7 @@ class LegislationController extends GetxController {
       if (response.statusCode == 200) {
         // Parse response and populate CountryList
         final Map<dynamic,dynamic> responseData = json.decode(response.body);
-        logger.i(responseData["results"]);
         List<dynamic> responseList = responseData["results"];
-
         // final List<TOC> parsedTOCList = responseList
         //     .map((item) => Country(
         //   name: item['name'] ?? '',
@@ -143,8 +167,7 @@ class LegislationController extends GetxController {
         // )).toList();
 
         // Update CountryList with parsed data
-        tocList(parsedTOCList);
-        logger.i(countryList.length);
+        // tocList(parsedTOCList);
       } else {
         // Handle error if the request was not successful
         if (kDebugMode) {
