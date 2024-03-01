@@ -27,6 +27,7 @@ class _SearchFilterViewState extends State<SearchFilterView> {
     void onCountryChanged(String? value) {
       setState(() {
         selectedCountry = value;
+        _controller.localityList();
       });
     }
 
@@ -71,20 +72,20 @@ class _SearchFilterViewState extends State<SearchFilterView> {
 
               const SizedBox(height: 16.0),
               // Topic dropdown
-              // DropdownButtonFormField<String>(
-              //   decoration: const InputDecoration(
-              //     labelText: 'Topic',
-              //     border: OutlineInputBorder(),
-              //   ),
-              //   value: selectedTopic,
-              //   onChanged: onTopicChanged,
-              //   items: topics.map((topic) {
-              //     return DropdownMenuItem<String>(
-              //       value: topic.title,
-              //       child: Text(topic.title),
-              //     );
-              //   }).toList(),
-              // ),
+              DropdownButtonFormField<String>(
+                decoration: const InputDecoration(
+                  labelText: 'Locality',
+                  border: OutlineInputBorder(),
+                ),
+                value: selectedTopic,
+                onChanged: onTopicChanged,
+                items: _controller.localityList.map((locality) {
+                  return DropdownMenuItem<String>(
+                    value: locality.frbrUriCode,
+                    child: Text(locality.name),
+                  );
+                }).toList(),
+              ),
               const SizedBox(height: 16.0),
               // Search button
               ElevatedButton(
