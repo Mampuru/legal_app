@@ -120,7 +120,7 @@ class LegislationController extends GetxController {
   }
 
   //Extracts localities for the fetch countries response
-  void fetchLocality(List localities){
+  void fetchLocality(List<dynamic> localities){
     try{
       final List<Locality> parsedLocalityList = localities
           .map((item) => Locality(
