@@ -29,8 +29,7 @@ class _SearchFilterViewState extends State<SearchFilterView> {
       setState(() {
         selectedCountry = value;
         List<Country> temp = _controller.countryList.where((country) => country.name == value).toList();
-        logger.e(temp[0].localities);
-        // _controller.localityList(temp[0].localities);
+        _controller.fetchLocality(temp[0].localities);
       });
     }
 
