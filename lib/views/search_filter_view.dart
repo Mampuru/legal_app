@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../constants.dart';
 import '../controllers/legislation_controller.dart';
 import '../models/country_model.dart';
 
@@ -27,7 +28,9 @@ class _SearchFilterViewState extends State<SearchFilterView> {
     void onCountryChanged(String? value) {
       setState(() {
         selectedCountry = value;
-        _controller.localityList();
+        List<Country> temp = _controller.countryList.where((country) => country.name == value).toList();
+        logger.e(temp[0].localities);
+        // _controller.localityList(temp[0].localities);
       });
     }
 
