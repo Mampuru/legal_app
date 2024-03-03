@@ -6,5 +6,5 @@
 * Current version support Africa countries only.
 
 ## Features
-* Search functionality for works and expressions.
+* Search and filter functionality for works and expressions.
 * Legislation reader view  
