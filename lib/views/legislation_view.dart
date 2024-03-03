@@ -27,7 +27,7 @@ Widget legislationListView(List legislationList ){
       return ListTile(
         title: Text(legislationList[index].title),
         subtitle: Text(legislationList[index].description),
-        trailing: Text(legislationList[index].status),
+        trailing: Text(legislationList[index].publicationDate),
         onTap: () {
           // Action on tapping the legislation item
           // For instance, navigating to detailed legislation view
