@@ -2,7 +2,7 @@
 class Legislation {
   final String title;
   final String description;
-  final String status;
+  final String publicationDate;
 
-  Legislation({required this.title, required this.description, required this.status});
+  Legislation({required this.title, required this.description, required this.publicationDate});
 }
