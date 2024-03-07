@@ -7,4 +7,4 @@
 
 ## Features
 * Search and filter functionality for works and expressions.
-* Legislation reader view  
+* Legislation pdf reader view  
