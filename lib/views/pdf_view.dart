@@ -36,14 +36,12 @@ class _PDFViewState extends State<PDFView> {
       print("Start download file from internet!");
     }
     try {
-      // "https://berlin2017.droidcon.cod.newthinking.net/sites/global.droidcon.cod.newthinking.net/files/media/documents/Flutter%20-%2060FPS%20UI%20of%20the%20future%20%20-%20DroidconDE%2017.pdf";
-      // final url = "https://pdfkit.org/docs/guide.pdf";
       const url = "http://www.pdf995.com/samples/pdf.pdf";
       final filename = url.substring(url.lastIndexOf("/") + 1);
       var request = await HttpClient().getUrl(Uri.parse(url));
       var response = await request.close();
       var bytes = await consolidateHttpClientResponseBytes(response);
-      var dir = await getApplicationDocumentsDirectory();
+      var dir = await getApplicationDocumentsDirectory();//TODO need to fetch the download/documents path
       if (kDebugMode) {
         print("Download files");
       }
