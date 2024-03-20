@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:path_provider/path_provider.dart';
 
 class PDFView extends StatefulWidget {
   const PDFView({Key? key}) : super(key: key);
@@ -41,7 +42,7 @@ class _PDFViewState extends State<PDFView> {
       var request = await HttpClient().getUrl(Uri.parse(url));
       var response = await request.close();
       var bytes = await consolidateHttpClientResponseBytes(response);
-      var dir = await getApplicationDocumentsDirectory();//TODO need to fetch the download/documents path
+      var dir = await getApplicationDocumentsDirectory();
       if (kDebugMode) {
         print("Download files");
       }
