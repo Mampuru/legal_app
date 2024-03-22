@@ -45,7 +45,7 @@ class _HomeViewState extends State<HomeView> {
             label: 'Search',
           ),
           BottomNavigationBarItem(
-            icon: Icon(_currentIndex == 1 ? Icons.person : Icons.person_outlined,
+            icon: Icon(_currentIndex == 2 ? Icons.person : Icons.person_outlined,
                 color: _currentIndex == 2 ? Colors.cyanAccent : Colors.white),
             label: 'Profile',
           ),
