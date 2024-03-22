@@ -35,15 +35,18 @@ class _HomeViewState extends State<HomeView> {
         },
         items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home,color: _currentIndex == 0 ? Colors.cyanAccent : Colors.white),
+            icon: Icon(_currentIndex == 0 ? Icons.home : Icons.home_outlined,
+                color: _currentIndex == 0 ? Colors.cyanAccent : Colors.white),
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon:  Icon(Icons.search,color: _currentIndex == 1 ? Colors.cyanAccent : Colors.white),
+            icon:  Icon( _currentIndex == 1 ? Icons.search : Icons.search_outlined ,
+                color: _currentIndex == 1 ? Colors.cyanAccent : Colors.white),
             label: 'Search',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person,color: _currentIndex == 2 ? Colors.cyanAccent : Colors.white),
+            icon: Icon(_currentIndex == 1 ? Icons.person : Icons.person_outlined,
+                color: _currentIndex == 2 ? Colors.cyanAccent : Colors.white),
             label: 'Profile',
           ),
         ],
