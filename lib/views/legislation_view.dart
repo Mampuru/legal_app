@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:legal_app/views/pdf_view.dart';
 import '../controllers/legislation_controller.dart';
 
 // ignore: use_key_in_widget_constructors
@@ -29,9 +30,7 @@ Widget legislationListView(List legislationList ){
         subtitle: Text(legislationList[index].description),
         trailing: Text(legislationList[index].publicationDate),
         onTap: () {
-          // Action on tapping the legislation item
-          // For instance, navigating to detailed legislation view
-          // Navigator.push(context, MaterialPageRoute(builder: (context) => DetailedLegislationScreen()));
+          Navigator.push(context, MaterialPageRoute(builder: (context) => const PDFView()));
         },
       );
     },
