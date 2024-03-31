@@ -2,7 +2,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../constants.dart';
 import '../controllers/legislation_controller.dart';
 import '../models/country_model.dart';
 
@@ -48,14 +47,13 @@ class _SearchFilterViewState extends State<SearchFilterView> {
 
     @override
     Widget build(BuildContext context) {
-      return Scaffold(
-        body: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              // Country dropdown
-              Obx(() =>
+      return Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            // Country dropdown
+            Obx(() =>
                 DropdownButtonFormField<String>(
                   decoration: const InputDecoration(
                     labelText: 'Country',
@@ -70,32 +68,47 @@ class _SearchFilterViewState extends State<SearchFilterView> {
                     );
                   }).toList(),
                 ),
-              ),
+            ),
 
-              const SizedBox(height: 16.0),
-              // Topic dropdown
-              DropdownButtonFormField<String>(
-                decoration: const InputDecoration(
-                  labelText: 'Locality',
-                  border: OutlineInputBorder(),
-                ),
-                value: selectedTopic,
-                onChanged: onTopicChanged,
-                items: _controller.localityList.map((locality) {
-                  return DropdownMenuItem<String>(
-                    value: locality.frbrUriCode,
-                    child: Text(locality.name),
-                  );
-                }).toList(),
+            const SizedBox(height: 16.0),
+            // Topic dropdown
+            DropdownButtonFormField<String>(
+              decoration: const InputDecoration(
+                labelText: 'Locality',
+                border: OutlineInputBorder(),
               ),
-              const SizedBox(height: 16.0),
-              // Search button
-              ElevatedButton(
-                onPressed: onSearchPressed,
-                child: const Text('Search'),
+              value: selectedTopic,
+              onChanged: onTopicChanged,
+              items: _controller.localityList.map((locality) {
+                return DropdownMenuItem<String>(
+                  value: locality.frbrUriCode,
+                  child: Text(locality.name),
+                );
+              }).toList(),
+            ),
+            const SizedBox(height: 16.0),
+            // Topic dropdown
+            DropdownButtonFormField<String>(
+              decoration: const InputDecoration(
+                labelText: 'Topic',
+                border: OutlineInputBorder(),
               ),
-            ],
-          ),
+              value: selectedTopic,
+              onChanged: onTopicChanged,
+              items: _controller.localityList.map((locality) {
+                return DropdownMenuItem<String>(
+                  value: locality.frbrUriCode,
+                  child: Text(locality.name),
+                );
+              }).toList(),
+            ),
+            const SizedBox(height: 20.0),
+            // Search button
+            ElevatedButton(
+              onPressed: onSearchPressed,
+              child: const Text('Search'),
+            ),
+          ],
         ),
       );
   }
