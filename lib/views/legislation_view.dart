@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:legal_app/views/pdf_view.dart';
+import 'package:legal_app/views/search_filter_view.dart';
 import '../controllers/legislation_controller.dart';
 
 // ignore: use_key_in_widget_constructors
@@ -10,13 +11,21 @@ class LegislationView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: GetX<LegislationController>(
-        init: _controller,
-        builder: (_) {
-          // Implement UI to display legislation data
-          return _.isLoading.value ? const CircularProgressIndicator() : legislationListView(_controller.legislationList);
-        },
-      ),
+      body: Column(
+        children: [
+          const SearchFilterView(),
+          SizedBox(
+            height: 400,
+            child: GetX<LegislationController>(
+              init: _controller,
+              builder: (_) {
+                // Implement UI to display legislation data
+                return _.isLoading.value ? const CircularProgressIndicator() : legislationListView(_controller.legislationList);
+              },
+            ),
+          ),
+        ],
+      )
     );
   }
 }
