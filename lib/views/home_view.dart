@@ -16,6 +16,7 @@ class _HomeViewState extends State<HomeView> {
   final List<Widget> _screens = [
     const SearchFilterView(),
     LegislationView(),
+    SummaryScreen(),
     ProfileScreen(),
   ];
 
@@ -24,6 +25,9 @@ class _HomeViewState extends State<HomeView> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Legal Assist'),
+        actions: [
+          IconButton(onPressed: (){}, icon: Icon(Icons.search,color: Colors.cyanAccent ))
+        ],
       ),
       body: _screens[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
@@ -45,8 +49,13 @@ class _HomeViewState extends State<HomeView> {
             label: 'Search',
           ),
           BottomNavigationBarItem(
-            icon: Icon(_currentIndex == 2 ? Icons.person : Icons.person_outlined,
+            icon: Icon(_currentIndex == 2 ? Icons.abc : Icons.abc_outlined,
                 color: _currentIndex == 2 ? Colors.cyanAccent : Colors.white),
+            label: 'Simplify',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(_currentIndex == 3 ? Icons.person : Icons.person_outlined,
+                color: _currentIndex == 3 ? Colors.cyanAccent : Colors.white),
             label: 'Profile',
           ),
         ],
@@ -70,6 +79,15 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Text('Profile Screen'),
+    );
+  }
+}
+
+class SummaryScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Text('Summery Screen'),
     );
   }
 }
